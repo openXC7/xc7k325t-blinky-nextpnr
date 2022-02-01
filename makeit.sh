@@ -16,6 +16,7 @@ then
     PART=xc7k325tffg900-2
 else
     echo "No board selected. Please edit ${0}"
+    exit 1
 fi
 
 
