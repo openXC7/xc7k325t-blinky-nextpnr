@@ -17,15 +17,16 @@ https://user-images.githubusercontent.com/148607/152079511-89539119-5d66-42f2-a7
 7. pushd build
 8. cmake -DARCH=xilinx ..
 9. make && sudo make install
-10. pushd xilinx/external
-11. rm -rf prjxray-db
-12. git clone https://github.com/kintex-chatter/prjxray-db.git
-13. git checkout k325
-14. popd
-15. python3 xilinx/python/bbaexport.py --device xc7k325tffg676-1 --bba xilinx/xc7k325tffg676-1.bba
-16. build/bbasm --l xilinx/xc7k325tffg676-1.bba xilinx/xc7k325tffg676-1.bin
-17. sudo mkdir -p /usr/local/share/nextpnr/xilinx-chipdb
-18. sudo ln -s $PWD/xilinx/external/prjxray-db /usr/local/share/nextpnr/
-19. sudo cp xilinx/xc7k325tffg676-1.bin /usr/local/share/nextpnr/xilinx-chipdb/
-20. Change directory to this project
-21. ./makeit.sh
+10. popd
+11. pushd xilinx/external
+12. rm -rf prjxray-db
+13. git clone https://github.com/kintex-chatter/prjxray-db.git
+14. git checkout k325
+15. popd
+16. python3 xilinx/python/bbaexport.py --device xc7k325tffg676-1 --bba xilinx/xc7k325tffg676-1.bba
+17. build/bbasm --l xilinx/xc7k325tffg676-1.bba xilinx/xc7k325tffg676-1.bin
+18. sudo mkdir -p /usr/local/share/nextpnr/xilinx-chipdb
+19. sudo ln -s $PWD/xilinx/external/prjxray-db /usr/local/share/nextpnr/
+20. sudo cp xilinx/xc7k325tffg676-1.bin /usr/local/share/nextpnr/xilinx-chipdb/
+21. Change directory to this project
+22. ./makeit.sh
