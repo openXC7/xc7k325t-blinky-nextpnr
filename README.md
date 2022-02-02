@@ -12,7 +12,7 @@ https://user-images.githubusercontent.com/148607/152079511-89539119-5d66-42f2-a7
 2. git clone 
 3. git clone https://github.com/kintex-chatter/nextpnr-xilinx.git
 4. cd nextpnr-xilinx
-5. git checkout xilinx-upstream-k7
+5. git checkout xilinx-upstream
 6. mkdir build
 7. pushd build
 8. cmake -DARCH=xilinx ..
