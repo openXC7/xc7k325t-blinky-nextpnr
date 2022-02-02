@@ -19,7 +19,7 @@ https://user-images.githubusercontent.com/148607/152079511-89539119-5d66-42f2-a7
 9. popd
 10. pushd xilinx/external
 11. rm -rf prjxray-db
-12. git clone https://github.com/jrrk2/prjxray-db
+12. git clone https://github.com/kintex-chatter/prjxray-db.git
 13. git checkout k325
 14. popd
 15. python3 xilinx/python/bbaexport.py --device xc7k325tffg676-1 --bba xilinx/xc7k325tffg676-1.bba
