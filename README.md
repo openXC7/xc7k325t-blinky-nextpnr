@@ -10,7 +10,7 @@ https://user-images.githubusercontent.com/148607/152079511-89539119-5d66-42f2-a7
 # How to reproduce
 1. clone and install yosys
 2. git clone 
-3. git clone https://github.com/hansfbaier/nextpnr-xilinx.git
+3. git clone https://github.com/kintex-chatter/nextpnr-xilinx.git
 4. cd nextpnr-xilinx
 5. mkdir build
 6. pushd build
