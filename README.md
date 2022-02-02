@@ -30,3 +30,6 @@ https://user-images.githubusercontent.com/148607/152079511-89539119-5d66-42f2-a7
 20. sudo cp xilinx/xc7k325tffg676-1.bin /usr/local/share/nextpnr/xilinx-chipdb/
 21. Change directory to this project
 22. ./makeit.sh
+
+Note: Everytime you change the installation of nextpnr-xilinx you will have to regenerate the chipdb,
+because the chipdb does not seem to be compatible between different binaries of nextpnr-xilinx
