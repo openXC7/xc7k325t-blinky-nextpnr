@@ -6,3 +6,25 @@ https://user-images.githubusercontent.com/148607/152079511-89539119-5d66-42f2-a7
 # Status
 * works on the QMTech XC7K325T board
 * does not build yet on Digilent Genesys2
+
+# How to reproduce
+1. clone and install yosys
+2. git clone 
+3. git clone https://github.com/hansfbaier/nextpnr-xilinx.git
+4. cd nextpnr-xilinx
+5. mkdir build
+6. pushd build
+7. cmake -DARCH=xilinx ..
+8. make && sudo make install
+9. popd
+10. pushd xilinx/external
+11. rm -rf prjxray-db
+12. git clone https://github.com/jrrk2/prjxray-db
+13. popd
+14. python3 xilinx/python/bbaexport.py --device xc7k325tffg676-1 --bba xilinx/xc7k325tffg676-1.bba
+15. build/bbasm --l xilinx/xc7k325tffg676-1.bba xilinx/xc7k325tffg676-1.bin
+16. sudo mkdir -p /usr/local/share/nextpnr/xilinx-chipdb
+17. sudo ln -s $PWD/xilinx/external/prjxray-db /usr/local/share/nextpnr/
+18. sudo cp xilinx/xc7k325tffg676-1.bin /usr/local/share/nextpnr/xilinx-chipdb/
+19. Change directory to this project
+20. ./makeit.sh
