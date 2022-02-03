@@ -4,6 +4,8 @@
 
 ![image](https://user-images.githubusercontent.com/148607/152079511-89539119-5d66-42f2-a709-3e35a81d7c0f.mp4)
 
+![image](https://user-images.githubusercontent.com/20798131/152385360-3e4f140e-cb57-4b04-bbc3-1ecd1d7374d5.mov)
+
 # Status
 * works on the QMTech XC7K325T board
 * limited functionality on Digilent Genesys2
