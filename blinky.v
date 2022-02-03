@@ -1,16 +1,20 @@
 module blinky(
     inout clkio,
-    output led
+    output [7:0] led
     );
     
     wire clko;
     wire clki = ~clko;
     
-    reg [24:0] count = 0;
+    reg clk, clkd;
+    reg [31:0] count = 0;
+
+    always @ (posedge(clko)) clkd <= ~clkd;
+    always @ (posedge(clkd)) clk <= ~clk;
     
-    always @ (posedge(clko)) count <= count + 1;
+    always @ (posedge(clk)) count <= count + 1;
      
-    assign led = count[24];
+    assign led = count[31:24];
     
    // IOBUF: Single-ended Bi-directional Buffer
    //        All devices
@@ -23,7 +27,7 @@ module blinky(
       .SLEW("SLOW") // Specify the output slew rate
    ) IOBUF_inst (
       .O(clko),     // Buffer output
-      .IO(clkio),     // Buffer inout port (connect directly to top-level port)
+      .IO(clkio),   // Buffer inout port (connect directly to top-level port)
       .I(clki),     // Buffer input
       .T(1'b0)      // 3-state enable input, high=input, low=output
    );
