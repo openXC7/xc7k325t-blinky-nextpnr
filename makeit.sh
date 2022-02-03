@@ -26,7 +26,6 @@ yosys -p "synth_xilinx -flatten -abc9 -nobram -arch xc7 -top ${PROJECT_NAME}; wr
 nextpnr-xilinx --chipdb ${CHIPDB_DIR}/${PART}.bin --xdc ${PROJECT_NAME}-${BOARD}.xdc --json ${PROJECT_NAME}.json --write ${PROJECT_NAME}_routed.json --fasm ${PROJECT_NAME}.fasm --verbose --debug
 source "${XRAY_DIR}/utils/environment.sh"
 ${XRAY_UTILS_DIR}/fasm2frames.py --part ${PART} --db-root ${DB_DIR}/kintex7 ${PROJECT_NAME}.fasm > ${PROJECT_NAME}.frames
-echo ${XRAY_UTILS_DIR}
 ${XRAY_TOOLS_DIR}/xc7frames2bit --part_file ${DB_DIR}/kintex7/${PART}/part.yaml --part_name ${PART} --frm_file ${PROJECT_NAME}.frames --output_file ${PROJECT_NAME}.bit
 #To send to SRAM:
 #openFPGALoader --board xxx ${PROJECT_NAME}.bit
