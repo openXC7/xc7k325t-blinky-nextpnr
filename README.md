@@ -1,11 +1,12 @@
 # Full Open Source Blinky on XC7K325T using yosys+nextpnr-xilinx
 
 ![image](https://user-images.githubusercontent.com/148607/152079663-e42ce6ed-66ef-461e-aed7-82a4e5667e39.png)
-https://user-images.githubusercontent.com/148607/152079511-89539119-5d66-42f2-a709-3e35a81d7c0f.mp4
+
+![image](https://user-images.githubusercontent.com/148607/152079511-89539119-5d66-42f2-a709-3e35a81d7c0f.mp4)
 
 # Status
 * works on the QMTech XC7K325T board
-* does not build yet on Digilent Genesys2
+* limited functionality on Digilent Genesys2
 
 # How to reproduce
 1. clone/build/install yosys from https://github.com/YosysHQ/yosys or download a release from https://github.com/YosysHQ/oss-cad-suite-build/releases
