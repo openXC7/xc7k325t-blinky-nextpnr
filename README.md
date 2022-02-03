@@ -1,10 +1,15 @@
 # Full Open Source Blinky on XC7K325T using yosys+nextpnr-xilinx
 
-![image](https://user-images.githubusercontent.com/148607/152079663-e42ce6ed-66ef-461e-aed7-82a4e5667e39.png)
+## Blinky on QMTech (xc7k325tffg676-1)
+![qmtech_blinky](https://user-images.githubusercontent.com/89043237/152394699-52cf5a22-5fd6-45b6-b9a2-3d2ca89d1fd0.gif)
+- For guide to reproduce see list below
+- Full size video: [https://user-images.githubusercontent.com/148607/152079511-89539119-5d66-42f2-a709-3e35a81d7c0f.mp4]
+- Large image: https://user-images.githubusercontent.com/148607/152079663-e42ce6ed-66ef-461e-aed7-82a4e5667e39.png
 
-![image](https://user-images.githubusercontent.com/148607/152079511-89539119-5d66-42f2-a709-3e35a81d7c0f.mp4)
-
-![image](https://user-images.githubusercontent.com/20798131/152385360-3e4f140e-cb57-4b04-bbc3-1ecd1d7374d5.mov)
+## Blinky on Digilent Genesys2 (xc7k325tffg900-2)
+![genesys2_blinky](https://user-images.githubusercontent.com/89043237/152396095-bc4dc672-1c3f-4a6a-8477-e953363d0f2f.gif)
+- For proof of concept see branch *ring-oscillator*
+- Full size video: https://user-images.githubusercontent.com/20798131/152385360-3e4f140e-cb57-4b04-bbc3-1ecd1d7374d5.mov
 
 # Status
 * works on the QMTech XC7K325T board
