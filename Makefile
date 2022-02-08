@@ -10,12 +10,15 @@ ifeq (${BOARD}, qmtech)
 PART = xc7k325tffg676-1
 else ifeq (${BOARD}, genesys2)
 PART = xc7k325tffg900-2
+else ifeq (${BOARD}, kx2)
+PART = xc7k160tffg676-2
 else
 .PHONY: check
 check:
 	@echo "BOARD environment variable not set. Available boards:"
 	@echo " * qmtech"
 	@echo " * genesys2"
+	@echo " * kx2"
 	@exit 1
 endif
 
