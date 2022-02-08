@@ -6,10 +6,12 @@ DB_DIR=$PREFIX/nextpnr/prjxray-db
 CHIPDB_DIR=$PREFIX/nextpnr/xilinx-chipdb
 # QMTech XC7K32T board
 BOARD=qmtech
+# QMTech XC7K325T ZYJZGW with core and expansion board
+# BOARD=qmtech-zyjzgw
 # Digilent Genesys2 board
 # BOARD=genesys2
 
-if [[ "$BOARD" == "qmtech" ]]
+if [[ "$BOARD" == "qmtech" || "$BOARD" == "qmtech-zyjzgw" ]]
 then
     PART=xc7k325tffg676-1
 elif [[ "$BOARD" == "genesys2" ]]
