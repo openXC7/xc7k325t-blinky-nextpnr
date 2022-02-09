@@ -17,6 +17,8 @@ check:
 	@exit 1
 endif
 
+all: ${PROJECT_NAME}.bit
+
 ${PROJECT_NAME}.json: ${PROJECT_NAME}.v
 	yosys -p "synth_xilinx -flatten -abc9 -nobram -arch xc7 -top ${PROJECT_NAME}; write_json ${PROJECT_NAME}.json" $<
 
@@ -30,8 +32,6 @@ ${PROJECT_NAME}.frames: ${PROJECT_NAME}.fasm
 ${PROJECT_NAME}.bit: ${PROJECT_NAME}.frames
 	@. "${XRAY_DIR}/utils/environment.sh"
 	xc7frames2bit --part_file ${DB_DIR}/kintex7/${PART}/part.yaml --part_name ${PART} --frm_file $< --output_file $@
-
-all: ${PROJECT_NAME}.bit
 
 clean:
 	@rm -f *.bit
