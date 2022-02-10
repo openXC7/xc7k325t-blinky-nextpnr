@@ -4,12 +4,14 @@ DB_DIR = ${PREFIX}/nextpnr/prjxray-db
 CHIPDB_DIR = ${PREFIX}/nextpnr/xilinx-chipdb
 XRAY_DIR ?= ${PREFIX}/prjxray
 SHELL = /bin/bash
+PYTHONPATH ?= ${XRAY_DIR}
 
 ifeq (${BOARD}, qmtech)
 PART = xc7k325tffg676-1
 else ifeq (${BOARD}, genesys2)
 PART = xc7k325tffg900-2
 else
+.PHONY: check
 check:
 	@echo "BOARD environment variable not set. Available boards:"
 	@echo " * qmtech"
@@ -17,6 +19,7 @@ check:
 	@exit 1
 endif
 
+.PHONY: all
 all: ${PROJECT_NAME}.bit
 
 ${PROJECT_NAME}.json: ${PROJECT_NAME}.v
@@ -33,6 +36,7 @@ ${PROJECT_NAME}.bit: ${PROJECT_NAME}.frames
 	@. "${XRAY_DIR}/utils/environment.sh"
 	xc7frames2bit --part_file ${DB_DIR}/kintex7/${PART}/part.yaml --part_name ${PART} --frm_file $< --output_file $@
 
+.PHONY: clean
 clean:
 	@rm -f *.bit
 	@rm -f *.frames
