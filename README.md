@@ -38,7 +38,7 @@
 19. cp xilinx/xc7k325tffg676-1.bin ~/opt/nextpnr/xilinx-chipdb/
 20. Set XRAY_DIR to the path where Project Xray has been cloned and built, see https://symbiflow.readthedocs.io/en/latest/prjxray/docs/db_dev_process/readme.html#quickstart-guide for details. You will need to follow steps 2-5. You may be able to skip installation of Vivado if you do not plan to run the fuzzers.
 21. Change directory to this project
-22. make
+22. BOARD=qmtech make
 
 Note: Every time you change the installation of nextpnr-xilinx you will have to regenerate the chipdb,
 because the chipdb does not seem to be compatible between different binaries of nextpnr-xilinx
