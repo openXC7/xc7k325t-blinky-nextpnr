@@ -1,5 +1,5 @@
 PROJECT_NAME = blinky
-PREFIX = /opt
+PREFIX ?= ~/opt
 DB_DIR = ${PREFIX}/nextpnr/prjxray-db
 CHIPDB_DIR = ${PREFIX}/nextpnr/xilinx-chipdb
 XRAY_DIR ?= ${PREFIX}/prjxray
