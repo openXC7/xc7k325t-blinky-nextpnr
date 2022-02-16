@@ -10,12 +10,14 @@
 ![genesys2_blinky](https://user-images.githubusercontent.com/89043237/152396095-bc4dc672-1c3f-4a6a-8477-e953363d0f2f.gif)
 - For proof of concept see branch *ring-oscillator*
 - Full size video: https://user-images.githubusercontent.com/20798131/152385360-3e4f140e-cb57-4b04-bbc3-1ecd1d7374d5.mov
+- Stable operation possible with external "PMOD" type oscillator module
 
 # Status
 * works on the QMTech XC7K325T board
 * limited functionality on Digilent Genesys2
 
 # How to reproduce
+0. sudo apt install libftdi1-dev libudev-dev git cmake build-essential tclsh clang tcl-dev libreadline-dev flex bison python3-dev libboost-all-dev libqt5-base-dev-tools libeigen3-dev python3 python3-pip python3-yaml pypy3 pkg-config libqt5opengl5-dev
 1. clone/build/install yosys from https://github.com/YosysHQ/yosys or download a release from https://github.com/YosysHQ/oss-cad-suite-build/releases
    note: test have been performed with Yosys 0.13+28 (git sha1 bf85dfee5, gcc 10.2.1-6 -fPIC -Os)
 2. git clone https://github.com/kintex-chatter/xc7k325t-blinky-nextpnr.git
