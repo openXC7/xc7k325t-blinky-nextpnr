@@ -10,6 +10,7 @@ ifeq (${BOARD}, qmtech)
 PART = xc7k325tffg676-1
 else ifeq (${BOARD}, genesys2)
 PART = xc7k325tffg900-2
+PROG = openFPGALoader --cable digilent --bitstream blinky.bit --ftdi-channel 1
 else
 .PHONY: check
 check:
@@ -21,6 +22,7 @@ endif
 
 .PHONY: all
 all: ${PROJECT_NAME}.bit
+	${PROG}
 
 ${PROJECT_NAME}.json: ${PROJECT_NAME}.v
 	yosys -p "synth_xilinx -flatten -abc9 -nobram -arch xc7 -top ${PROJECT_NAME}; write_json ${PROJECT_NAME}.json" $<
