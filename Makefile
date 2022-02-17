@@ -24,7 +24,7 @@ endif
 all: ${PROJECT_NAME}.bit
 	${PROG}
 
-${PROJECT_NAME}.json: ${PROJECT_NAME}.v
+${PROJECT_NAME}.json: ${PROJECT_NAME}.sv
 	yosys -p "synth_xilinx -flatten -abc9 -nobram -arch xc7 -top ${PROJECT_NAME}; write_json ${PROJECT_NAME}.json" $<
 
 ${PROJECT_NAME}.fasm: ${PROJECT_NAME}.json
