@@ -14,7 +14,7 @@
 
 # Status
 * works on the QMTech XC7K325T board
-* limited functionality on Digilent Genesys2
+* limited functionality on Digilent Genesys2 and [Memblaze PBlaze 3 SSD](https://github.com/kintex-chatter/xc7k325t-blinky-nextpnr/issues/12)
 
 # How to reproduce
 0. sudo apt install libftdi1-dev libudev-dev git cmake build-essential tclsh clang tcl-dev libreadline-dev flex bison python3-dev libboost-all-dev libqt5-base-dev-tools libeigen3-dev python3 python3-pip python3-yaml pypy3 pkg-config libqt5opengl5-dev
