@@ -29,18 +29,14 @@
 8. cmake -DARCH=xilinx -DCMAKE_INSTALL_PREFIX=~/opt/nextpnr ..
 9. make -j2 && make install
 10. popd
-11. pushd xilinx/external
-12. rm -rf prjxray-db
-13. git clone -b k325 https://github.com/kintex-chatter/prjxray-db.git
-14. popd
-15. python3 xilinx/python/bbaexport.py --device xc7k325tffg676-1 --bba xilinx/xc7k325tffg676-1.bba
-16. build/bbasm -l xilinx/xc7k325tffg676-1.bba xilinx/xc7k325tffg676-1.bin
-17. mkdir -p ~/opt/nextpnr/xilinx-chipdb
-18. ln -s $PWD/xilinx/external/prjxray-db ~/opt/nextpnr/
-19. cp xilinx/xc7k325tffg676-1.bin ~/opt/nextpnr/xilinx-chipdb/
-20. Set XRAY_DIR to the path where Project Xray has been cloned and built, see https://symbiflow.readthedocs.io/en/latest/prjxray/docs/db_dev_process/readme.html#quickstart-guide for details. You will need to follow steps 2-5. You may be able to skip installation of Vivado if you do not plan to run the fuzzers.
-21. Change directory to this project
-22. BOARD=qmtech make
+11. python3 xilinx/python/bbaexport.py --device xc7k325tffg676-1 --bba xilinx/xc7k325tffg676-1.bba
+12. build/bbasm -l xilinx/xc7k325tffg676-1.bba xilinx/xc7k325tffg676-1.bin
+13. mkdir -p ~/opt/nextpnr/xilinx-chipdb
+14. ln -s $PWD/xilinx/external/prjxray-db ~/opt/nextpnr/
+15. cp xilinx/xc7k325tffg676-1.bin ~/opt/nextpnr/xilinx-chipdb/
+16. Set XRAY_DIR to the path where Project Xray has been cloned and built, see https://symbiflow.readthedocs.io/en/latest/prjxray/docs/db_dev_process/readme.html#quickstart-guide for details. You will need to follow steps 2-5. You may be able to skip installation of Vivado if you do not plan to run the fuzzers.
+17. Change directory to this project
+18. BOARD=qmtech make
 
 Note: Every time you change the installation of nextpnr-xilinx you will have to regenerate the chipdb,
 because the chipdb does not seem to be compatible between different binaries of nextpnr-xilinx
