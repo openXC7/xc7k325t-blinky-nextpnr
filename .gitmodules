@@ -1,0 +1,3 @@
+[submodule "nextpnr-xilinx"]
+	path = nextpnr-xilinx
+	url = git@github.com:kintex-chatter/nextpnr-xilinx.git

@@ -20,23 +20,21 @@
 0. sudo apt install libftdi1-dev libudev-dev git cmake build-essential tclsh clang tcl-dev libreadline-dev flex bison python3-dev libboost-all-dev libqt5-base-dev-tools libeigen3-dev python3 python3-pip python3-yaml pypy3 pkg-config libqt5opengl5-dev
 1. clone/build/install yosys from https://github.com/YosysHQ/yosys or download a release from https://github.com/YosysHQ/oss-cad-suite-build/releases
    note: test have been performed with Yosys 0.13+28 (git sha1 bf85dfee5, gcc 10.2.1-6 -fPIC -Os)
-2. git clone https://github.com/kintex-chatter/xc7k325t-blinky-nextpnr.git
-3. git clone --recurse-submodules https://github.com/kintex-chatter/nextpnr-xilinx.git
-4. cd nextpnr-xilinx
-5. git checkout xilinx-upstream
-6. mkdir build
-7. pushd build
-8. cmake -DARCH=xilinx -DCMAKE_INSTALL_PREFIX=~/opt/nextpnr ..
-9. make -j2 && make install
-10. popd
-11. python3 xilinx/python/bbaexport.py --device xc7k325tffg676-1 --bba xilinx/xc7k325tffg676-1.bba
-12. build/bbasm -l xilinx/xc7k325tffg676-1.bba xilinx/xc7k325tffg676-1.bin
-13. mkdir -p ~/opt/nextpnr/xilinx-chipdb
-14. ln -s $PWD/xilinx/external/prjxray-db ~/opt/nextpnr/
-15. cp xilinx/xc7k325tffg676-1.bin ~/opt/nextpnr/xilinx-chipdb/
-16. Set XRAY_DIR to the path where Project Xray has been cloned and built, see https://symbiflow.readthedocs.io/en/latest/prjxray/docs/db_dev_process/readme.html#quickstart-guide for details. You will need to follow steps 2-5. You may be able to skip installation of Vivado if you do not plan to run the fuzzers.
-17. Change directory to this project
-18. BOARD=qmtech make
+2. git clone --recurse-submodules https://github.com/kintex-chatter/xc7k325t-blinky-nextpnr.git
+3. cd xc7k325t-blinky-nextpnr/nextpnr-xilinx
+4. mkdir build
+5. pushd build
+6. cmake -DARCH=xilinx -DCMAKE_INSTALL_PREFIX=~/opt/nextpnr ..
+7. make -j2 && make install
+8. popd
+9. python3 xilinx/python/bbaexport.py --device xc7k325tffg676-1 --bba xilinx/xc7k325tffg676-1.bba
+10. build/bbasm -l xilinx/xc7k325tffg676-1.bba xilinx/xc7k325tffg676-1.bin
+11. mkdir -p ~/opt/nextpnr/xilinx-chipdb
+12. ln -s $PWD/xilinx/external/prjxray-db ~/opt/nextpnr/
+13. cp xilinx/xc7k325tffg676-1.bin ~/opt/nextpnr/xilinx-chipdb/
+14. Set XRAY_DIR to the path where Project Xray has been cloned and built, see https://symbiflow.readthedocs.io/en/latest/prjxray/docs/db_dev_process/readme.html#quickstart-guide for details. You will need to follow steps 2-5. You may be able to skip installation of Vivado if you do not plan to run the fuzzers.
+15. Change directory to this project
+16. BOARD=qmtech make
 
 Note: Every time you change the installation of nextpnr-xilinx you will have to regenerate the chipdb,
 because the chipdb does not seem to be compatible between different binaries of nextpnr-xilinx
