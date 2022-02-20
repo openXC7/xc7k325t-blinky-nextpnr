@@ -37,12 +37,10 @@ ${PROJECT_NAME}.fasm: ${PROJECT_NAME}.json
 	${NEXTPNR_DIR}/bin/nextpnr-xilinx --chipdb ${CHIPDB_DIR}/${PART}.bin --xdc ${PROJECT_NAME}-${BOARD}.xdc --json $< --write ${PROJECT_NAME}_routed.json --fasm $@ --verbose --debug
 
 ${PROJECT_NAME}.frames: ${PROJECT_NAME}.fasm
-	@. "${XRAY_DIR}/utils/environment.sh"
-	fasm2frames --part ${PART} --db-root ${DB_DIR}/kintex7 $< > $@
+	prjxray/env/bin/fasm2frames --part ${PART} --db-root ${DB_DIR}/kintex7 $< > $@
 
 ${PROJECT_NAME}.bit: ${PROJECT_NAME}.frames
-	@. "${XRAY_DIR}/utils/environment.sh"
-	xc7frames2bit --part_file ${DB_DIR}/kintex7/${PART}/part.yaml --part_name ${PART} --frm_file $< --output_file $@
+	${XRAY_DIR}/bin/xc7frames2bit --part_file ${DB_DIR}/kintex7/${PART}/part.yaml --part_name ${PART} --frm_file $< --output_file $@
 
 .PHONY: setup
 setup:
