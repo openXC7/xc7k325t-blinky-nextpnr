@@ -19,7 +19,7 @@ ifeq (${BOARD}, qmtech)
 PART = xc7k325tffg676-1
 else ifeq (${BOARD}, genesys2)
 PART = xc7k325tffg900-2
-PROG = openFPGALoader --cable digilent --bitstream blinky.bit --ftdi-channel 1
+PROG = openFPGALoader --cable digilent --bitstream ${PROJECT_NAME}.bit --ftdi-channel 1
 else
 .PHONY: check
 check:
