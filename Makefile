@@ -8,6 +8,7 @@ XRAY_TOOLS_DIR = ${XRAY_DIR}/bin
 NEXTPNR_DIR ?= ${PREFIX}/nextpnr
 SHELL = /bin/bash
 PYTHONPATH ?= ${XRAY_DIR}
+QMTECH_CABLE ?= tigard
 
 # This workaround is only required for macOS, because Apple has explicitly disabled OpenMP support in their compilers.
 ifeq ($(shell uname -s),Darwin)
@@ -17,6 +18,7 @@ endif
 
 ifeq (${BOARD}, qmtech)
 PART = xc7k325tffg676-1
+PROG = openFPGALoader --cable ${QMTECH_CABLE} --board qmtechKintex7 --bitstream ${PROJECT_NAME}.bit
 else ifeq (${BOARD}, genesys2)
 PART = xc7k325tffg900-2
 PROG = openFPGALoader --cable digilent --bitstream ${PROJECT_NAME}.bit --ftdi-channel 1
