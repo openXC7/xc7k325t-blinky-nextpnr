@@ -18,10 +18,10 @@ endif
 
 ifeq (${BOARD}, qmtech)
 PART = xc7k325tffg676-1
-PROG = openFPGALoader --cable ${QMTECH_CABLE} --board qmtechKintex7 --bitstream ${PROJECT_NAME}.bit
+PROG = openFPGALoader --cable ${QMTECH_CABLE} --board qmtechKintex7 --bitstream ${PROJECT_NAME}-${BOARD}.bit
 else ifeq (${BOARD}, genesys2)
 PART = xc7k325tffg900-2
-PROG = openFPGALoader --board genesys2 --bitstream ${PROJECT_NAME}.bit
+PROG = openFPGALoader --board genesys2 --bitstream ${PROJECT_NAME}-${BOARD}.bit
 else
 .PHONY: check
 check:
@@ -32,19 +32,19 @@ check:
 endif
 
 .PHONY: all
-all: ${PROJECT_NAME}.bit
+all: ${PROJECT_NAME}-${BOARD}.bit
 	${PROG}
 
 ${PROJECT_NAME}.json: ${PROJECT_NAME}.v
 	yosys -p "synth_xilinx -flatten -abc9 -nobram -arch xc7 -top ${PROJECT_NAME}; write_json ${PROJECT_NAME}.json" $<
 
-${PROJECT_NAME}.fasm: ${PROJECT_NAME}.json
-	${NEXTPNR_DIR}/bin/nextpnr-xilinx --chipdb ${CHIPDB_DIR}/${PART}.bin --xdc ${PROJECT_NAME}-${BOARD}.xdc --json $< --write ${PROJECT_NAME}_routed.json --fasm $@ --verbose --debug
+${PROJECT_NAME}-${BOARD}.fasm: ${PROJECT_NAME}.json
+	${NEXTPNR_DIR}/bin/nextpnr-xilinx --chipdb ${CHIPDB_DIR}/${PART}.bin --xdc ${PROJECT_NAME}-${BOARD}.xdc --json $< --write ${PROJECT_NAME}-${BOARD}-routed.json --fasm $@ --verbose --debug
 
-${PROJECT_NAME}.frames: ${PROJECT_NAME}.fasm
+${PROJECT_NAME}-${BOARD}.frames: ${PROJECT_NAME}-${BOARD}.fasm
 	${XRAY_UTILS_DIR}/fasm2frames --part ${PART} --db-root ${DB_DIR}/kintex7 $< > $@
 
-${PROJECT_NAME}.bit: ${PROJECT_NAME}.frames
+${PROJECT_NAME}-${BOARD}.bit: ${PROJECT_NAME}-${BOARD}.frames
 	${XRAY_TOOLS_DIR}/xc7frames2bit --part_file ${DB_DIR}/kintex7/${PART}/part.yaml --part_name ${PART} --frm_file $< --output_file $@
 
 .PHONY: setup
