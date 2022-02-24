@@ -21,7 +21,7 @@ PART = xc7k325tffg676-1
 PROG = openFPGALoader --cable ${QMTECH_CABLE} --board qmtechKintex7 --bitstream ${PROJECT_NAME}.bit
 else ifeq (${BOARD}, genesys2)
 PART = xc7k325tffg900-2
-PROG = openFPGALoader --cable digilent --bitstream ${PROJECT_NAME}.bit --ftdi-channel 1
+PROG = openFPGALoader --board genesys2 --bitstream ${PROJECT_NAME}.bit
 else
 .PHONY: check
 check:
