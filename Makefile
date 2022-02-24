@@ -1,4 +1,4 @@
-PROJECT_NAME = blinky
+PROJECT_NAME ?= blinky
 PREFIX ?= ${HOME}/opt
 DB_DIR = ${PREFIX}/nextpnr/prjxray-db
 CHIPDB_DIR = ${PREFIX}/nextpnr/xilinx-chipdb
