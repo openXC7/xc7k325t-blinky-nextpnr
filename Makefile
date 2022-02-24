@@ -7,6 +7,7 @@ NEXTPNR_DIR ?= ${PREFIX}/nextpnr
 SHELL = /bin/bash
 PYTHONPATH ?= ${XRAY_DIR}
 
+# This workaround is only required for macOS, because Apple has explicitly disabled OpenMP support in their compilers.
 ifeq ($(shell uname -s),Darwin)
 NEXTPNR_BUILD_ENV = env CC=/usr/local/opt/llvm/bin/clang CXX=/usr/local/opt/llvm/bin/clang++ LDFLAGS="-L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib"
 NEXTPNR_CMAKE_FLAGS = -DBUILD_GUI=0
