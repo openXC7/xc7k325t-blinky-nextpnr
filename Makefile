@@ -44,20 +44,23 @@ ${PROJECT_NAME}.bit: ${PROJECT_NAME}.frames
 
 .PHONY: setup
 setup:
+ifeq (${PART},)
+	make check
+endif
 	${NEXTPNR_BUILD_ENV} cmake -S nextpnr-xilinx -B nextpnr-xilinx/build ${NEXTPNR_CMAKE_FLAGS} -DARCH=xilinx -DCMAKE_INSTALL_PREFIX=${NEXTPNR_DIR}
 	make -C nextpnr-xilinx/build -j2 all
 	make -C nextpnr-xilinx/build install
-	if [ ! -f nextpnr-xilinx/xilinx/xc7k325tffg676-1.bba ] ; then \
+	if [ ! -f nextpnr-xilinx/xilinx/${PART}.bba ] ; then \
 		cd nextpnr-xilinx ; \
-		python3 xilinx/python/bbaexport.py --device xc7k325tffg676-1 --bba xilinx/xc7k325tffg676-1.bba ; \
+		python3 xilinx/python/bbaexport.py --device ${PART} --bba xilinx/${PART}.bba ; \
 	fi
-	if [ ! -f nextpnr-xilinx/xilinx/xc7k325tffg676-1.bin ] ; then \
+	if [ ! -f nextpnr-xilinx/xilinx/${PART}.bin ] ; then \
 		cd nextpnr-xilinx ; \
-		build/bbasm -l xilinx/xc7k325tffg676-1.bba xilinx/xc7k325tffg676-1.bin ; \
+		build/bbasm -l xilinx/${PART}.bba xilinx/${PART}.bin ; \
 	fi
-	if [ ! -f ${NEXTPNR_DIR}/xilinx-chipdb/xc7k325tffg676-1.bin ] ; then \
+	if [ ! -f ${NEXTPNR_DIR}/xilinx-chipdb/${PART}.bin ] ; then \
 		mkdir -p ${NEXTPNR_DIR}/xilinx-chipdb ; \
-		cp nextpnr-xilinx/xilinx/xc7k325tffg676-1.bin ${NEXTPNR_DIR}/xilinx-chipdb/ ; \
+		cp nextpnr-xilinx/xilinx/${PART}.bin ${NEXTPNR_DIR}/xilinx-chipdb/ ; \
 	fi
 	if [ ! -e ${NEXTPNR_DIR}/prjxray-db ] ; then \
 		ln -s ${PWD}/nextpnr-xilinx/xilinx/external/prjxray-db ${NEXTPNR_DIR}/ ; \
