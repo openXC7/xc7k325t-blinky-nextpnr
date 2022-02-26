@@ -21,20 +21,9 @@
 1. clone/build/install yosys from https://github.com/YosysHQ/yosys or download a release from https://github.com/YosysHQ/oss-cad-suite-build/releases
    note: test have been performed with Yosys 0.13+28 (git sha1 bf85dfee5, gcc 10.2.1-6 -fPIC -Os)
 2. git clone --recurse-submodules https://github.com/kintex-chatter/xc7k325t-blinky-nextpnr.git
-3. cd xc7k325t-blinky-nextpnr/nextpnr-xilinx
-4. mkdir build
-5. pushd build
-6. cmake -DARCH=xilinx -DCMAKE_INSTALL_PREFIX=~/opt/nextpnr ..
-7. make -j2 && make install
-8. popd
-9. python3 xilinx/python/bbaexport.py --device xc7k325tffg676-1 --bba xilinx/xc7k325tffg676-1.bba
-10. build/bbasm -l xilinx/xc7k325tffg676-1.bba xilinx/xc7k325tffg676-1.bin
-11. mkdir -p ~/opt/nextpnr/xilinx-chipdb
-12. ln -s $PWD/xilinx/external/prjxray-db ~/opt/nextpnr/
-13. cp xilinx/xc7k325tffg676-1.bin ~/opt/nextpnr/xilinx-chipdb/
-14. Set XRAY_DIR to the path where Project Xray has been cloned and built, see https://symbiflow.readthedocs.io/en/latest/prjxray/docs/db_dev_process/readme.html#quickstart-guide for details. You will need to follow steps 2-5. You may be able to skip installation of Vivado if you do not plan to run the fuzzers.
-15. Change directory to this project
-16. BOARD=qmtech make
+3. cd xc7k325t-blinky-nextpnr
+4. make BOARD=qmtech setup
+5. make BOARD=qmtech all
 
 Note: Every time you change the installation of nextpnr-xilinx you will have to regenerate the chipdb,
 because the chipdb does not seem to be compatible between different binaries of nextpnr-xilinx
