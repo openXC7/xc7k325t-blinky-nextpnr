@@ -1,11 +1,11 @@
 module blinky(
     input clk,
-    output led
+    output [7:0] user_led
     );
-    
-    reg [24:0] count = 0;
-    
+
+    reg [31:0] count = 0;
+
     always @ (posedge(clk)) count <= count + 1;
-     
-    assign led = count[24];
+
+    assign user_led[7:0] = count[31:24];
 endmodule

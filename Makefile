@@ -12,6 +12,8 @@ else ifeq (${BOARD}, genesys2)
 PART = xc7k325tffg900-2
 else ifeq (${BOARD}, kx2)
 PART = xc7k160tffg676-2
+else ifeq (${BOARD}, hpc_420t)
+PART = xc7k420tffg901-1
 else
 .PHONY: check
 check:
@@ -19,6 +21,7 @@ check:
 	@echo " * qmtech"
 	@echo " * genesys2"
 	@echo " * kx2"
+	@echo " * hpc_420t"
 	@exit 1
 endif
 
