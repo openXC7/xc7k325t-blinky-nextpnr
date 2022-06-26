@@ -1,6 +1,7 @@
 [submodule "nextpnr-xilinx"]
 	path = nextpnr-xilinx
 	url = git@github.com:kintex-chatter/nextpnr-xilinx.git
+	branch = iob18-trial
 [submodule "prjxray"]
 	path = prjxray
 	url = git@github.com:kintex-chatter/prjxray.git
