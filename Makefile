@@ -52,6 +52,7 @@ setup:
 ifeq (${PART},)
 	make check
 endif
+	cp -rv db-workspace-for-kintex7/* nextpnr-xilinx/xilinx/external/prjxray-db/kintex7
 	${NEXTPNR_BUILD_ENV} cmake -S nextpnr-xilinx -B nextpnr-xilinx/build ${NEXTPNR_CMAKE_FLAGS} -DARCH=xilinx -DCMAKE_INSTALL_PREFIX=${NEXTPNR_DIR}
 	make -C nextpnr-xilinx/build -j2 all
 	make -C nextpnr-xilinx/build install
