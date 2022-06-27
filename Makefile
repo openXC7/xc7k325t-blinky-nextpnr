@@ -9,6 +9,7 @@ NEXTPNR_DIR ?= ${PREFIX}/nextpnr
 SHELL = /bin/bash
 PYTHONPATH ?= ${XRAY_DIR}
 QMTECH_CABLE ?= tigard
+JOBS ?= 4
 
 # This workaround is only required for macOS, because Apple has explicitly disabled OpenMP support in their compilers.
 ifeq ($(shell uname -s),Darwin)
@@ -54,7 +55,7 @@ ifeq (${PART},)
 endif
 	cp -rv db-workspace-for-kintex7/* nextpnr-xilinx/xilinx/external/prjxray-db/kintex7
 	${NEXTPNR_BUILD_ENV} cmake -S nextpnr-xilinx -B nextpnr-xilinx/build ${NEXTPNR_CMAKE_FLAGS} -DARCH=xilinx -DCMAKE_INSTALL_PREFIX=${NEXTPNR_DIR}
-	make -C nextpnr-xilinx/build -j2 all
+	make -C nextpnr-xilinx/build -j${JOBS} all
 	make -C nextpnr-xilinx/build install
 	if [ ! -f nextpnr-xilinx/xilinx/${PART}.bba ] ; then \
 		cd nextpnr-xilinx ; \
@@ -72,9 +73,9 @@ endif
 		ln -s ${PWD}/nextpnr-xilinx/xilinx/external/prjxray-db ${NEXTPNR_DIR}/ ; \
 	fi
 	cmake -S prjxray -B prjxray/build -DCMAKE_INSTALL_PREFIX=${XRAY_DIR}
-	make -C prjxray/build
-	make -C prjxray/build install
-	make -C prjxray env
+	make -j${JOBS} -C prjxray/build
+	make -j${JOBS} -C prjxray/build install
+	make -j${JOBS} -C prjxray env
 
 .PHONY: clean
 clean:
