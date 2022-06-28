@@ -23,6 +23,7 @@ PART = xc7k325tffg676-1
 PROG = openFPGALoader --cable ${QMTECH_CABLE} --board qmtechKintex7 --bitstream ${PROJECT_NAME}-${BOARD}.bit
 else ifeq (${BOARD}, genesys2)
 PART = xc7k325tffg900-2
+CLK = -diffclk
 PROG = openFPGALoader --board genesys2 --bitstream ${PROJECT_NAME}-${BOARD}.bit
 else ifeq (${BOARD}, stlv7325)
 PART = xc7k325tffg676-1

@@ -1,6 +1,8 @@
-# (ab)use the single ended 60MHz clock from the ULPI PHY
-set_property LOC T25 [get_ports clk]
-set_property IOSTANDARD LVCMOS33 [get_ports {clk}]
+set_property LOC AD12 [get_ports clk_p]
+set_property IOSTANDARD LVDS [get_ports {clk_p}]
+
+set_property LOC AD11 [get_ports clk_n]
+set_property IOSTANDARD LVDS [get_ports {clk_n}]
 
 set_property LOC T28 [get_ports led]
 set_property IOSTANDARD LVCMOS33 [get_ports {led}]
