@@ -9,6 +9,7 @@ NEXTPNR_DIR ?= ${PREFIX}/nextpnr
 SHELL = /bin/bash
 PYTHONPATH ?= ${XRAY_DIR}
 QMTECH_CABLE ?= tigard
+STLV_CABLE ?= tigard
 JOBS ?= 4
 
 # This workaround is only required for macOS, because Apple has explicitly disabled OpenMP support in their compilers.
@@ -23,12 +24,17 @@ PROG = openFPGALoader --cable ${QMTECH_CABLE} --board qmtechKintex7 --bitstream 
 else ifeq (${BOARD}, genesys2)
 PART = xc7k325tffg900-2
 PROG = openFPGALoader --board genesys2 --bitstream ${PROJECT_NAME}-${BOARD}.bit
+else ifeq (${BOARD}, stlv7325)
+PART = xc7k325tffg676-1
+CLK = -diffclk
+PROG = openFPGALoader --cable ${STLV_CABLE} --bitstream ${PROJECT_NAME}-${BOARD}.bit
 else
 .PHONY: check
 check:
 	@echo "BOARD environment variable not set. Available boards:"
 	@echo " * qmtech"
 	@echo " * genesys2"
+	@echo " * stlv7325"
 	@exit 1
 endif
 
@@ -36,7 +42,7 @@ endif
 all: ${PROJECT_NAME}-${BOARD}.bit
 	${PROG}
 
-${PROJECT_NAME}.json: ${PROJECT_NAME}.v
+${PROJECT_NAME}.json: ${PROJECT_NAME}${CLK}.v
 	yosys -p "synth_xilinx -flatten -abc9 -nobram -arch xc7 -top ${PROJECT_NAME}; write_json ${PROJECT_NAME}.json" $<
 
 ${PROJECT_NAME}-${BOARD}.fasm: ${PROJECT_NAME}.json
