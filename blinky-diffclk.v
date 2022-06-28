@@ -9,8 +9,8 @@ module blinky (
     wire clk_ibufg;
     wire clk;
 
-    IBUFDS ibufg_inst (.I(clk_p), .IB(clk_n), .O(clk_ibufg));
-    BUFG    bufg_inst  (.I(clk_ibufg), .O(clk));
+    IBUFDS ibuf_inst (.I(clk_p), .IB(clk_n), .O(clk_ibufg));
+    BUFG   bufg_inst (.I(clk_ibufg), .O(clk));
 
     reg [24:0] r_count = 0;
 
