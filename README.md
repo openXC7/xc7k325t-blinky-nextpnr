@@ -14,7 +14,7 @@
 - *Breaking:* Should now work with the default clock. Unfortunately I don't have the board, so please test if you have it and let us know!
 
 ## Blinky on the AliExpress STLV7325 board
-![stlv7325_bliny](https://user-images.githubusercontent.com/148607/176101822-2fa0d7bd-d3f2-4e3c-99e2-0fc40e834ecf.mp4)
+![stlv7325_blinky](https://user-images.githubusercontent.com/148607/176102441-4fe2065f-4963-46c2-92b8-d6a5873fc28b.gif)
 - works with differential clock input on the high performance banks
 
 # Status
