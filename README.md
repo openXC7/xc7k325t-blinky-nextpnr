@@ -13,8 +13,13 @@
 - Stable operation possible with external "PMOD" type oscillator module
 - *Breaking:* Should now work with the default clock. Unfortunately I don't have the board, so please test if you have it and let us know!
 
+## Blinky on the AliExpress STLV7325 board
+![stlv7325_bliny](https://user-images.githubusercontent.com/148607/176101822-2fa0d7bd-d3f2-4e3c-99e2-0fc40e834ecf.mp4)
+- works with differential clock input on the high performance banks
+
 # Status
 * works on the QMTech XC7K325T board
+* works with differential clock input on the high performance banks on the STLV7325 board.
 * limited functionality on Digilent Genesys2 and [Memblaze PBlaze 3 SSD](https://github.com/kintex-chatter/xc7k325t-blinky-nextpnr/issues/12)
 
 # How to reproduce
