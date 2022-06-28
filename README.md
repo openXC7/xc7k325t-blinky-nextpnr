@@ -11,6 +11,7 @@
 - For proof of concept see branch *ring-oscillator*
 - Full size video: https://user-images.githubusercontent.com/20798131/152385360-3e4f140e-cb57-4b04-bbc3-1ecd1d7374d5.mov
 - Stable operation possible with external "PMOD" type oscillator module
+- *Breaking:* Should now work with the default clock. Unfortunately I don't have the board, so please test if you have it and let us know!
 
 # Status
 * works on the QMTech XC7K325T board
