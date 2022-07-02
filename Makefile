@@ -46,7 +46,7 @@ all: ${PROJECT_NAME}-${BOARD}.bit
 ${PROJECT_NAME}.json: ${PROJECT_NAME}${CLK}.v
 	yosys -p "synth_xilinx -flatten -abc9 -nobram -arch xc7 -top ${PROJECT_NAME}; write_json ${PROJECT_NAME}.json" $<
 
-${PROJECT_NAME}-${BOARD}.fasm: ${PROJECT_NAME}.json
+${PROJECT_NAME}-${BOARD}.fasm: ${PROJECT_NAME}.json ${PROJECT_NAME}-${BOARD}.xdc
 	${NEXTPNR_DIR}/bin/nextpnr-xilinx --chipdb ${CHIPDB_DIR}/${PART}.bin --xdc ${PROJECT_NAME}-${BOARD}.xdc --json $< --write ${PROJECT_NAME}-${BOARD}-routed.json --fasm $@ --verbose --debug
 
 ${PROJECT_NAME}-${BOARD}.frames: ${PROJECT_NAME}-${BOARD}.fasm
