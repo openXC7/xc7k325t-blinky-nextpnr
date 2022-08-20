@@ -16,7 +16,7 @@ JOBS ?= 4
 ifeq ($(shell uname -s),Darwin)
 HOME_BREW = $(shell brew --prefix llvm)
 NEXTPNR_BUILD_ENV = env CC=${HOME_BREW}/bin/clang CXX=${HOME_BREW}/bin/clang++ LDFLAGS="-L${HOME_BREW}/lib -Wl,-rpath,${HOME_BREW}/lib"
-NEXTPNR_CMAKE_FLAGS = -DBUILD_GUI=0
+NEXTPNR_CMAKE_FLAGS = -DBUILD_GUI=0 -DBUILD_PYTHON=0
 PRJXRAY_BUILD_ENV = env CXXFLAGS="-std=c++11"
 endif
 
