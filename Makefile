@@ -14,7 +14,8 @@ JOBS ?= 4
 
 # This workaround is only required for macOS, because Apple has explicitly disabled OpenMP support in their compilers.
 ifeq ($(shell uname -s),Darwin)
-NEXTPNR_BUILD_ENV = env CC=/usr/local/opt/llvm/bin/clang CXX=/usr/local/opt/llvm/bin/clang++ LDFLAGS="-L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib"
+HOME_BREW = $(shell brew --prefix llvm)
+NEXTPNR_BUILD_ENV = env CC=${HOME_BREW}/bin/clang CXX=${HOME_BREW}/bin/clang++ LDFLAGS="-L${HOME_BREW}/lib -Wl,-rpath,${HOME_BREW}/lib"
 NEXTPNR_CMAKE_FLAGS = -DBUILD_GUI=0
 endif
 
