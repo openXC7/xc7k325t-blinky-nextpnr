@@ -1,5 +1,13 @@
 # Full Open Source Blinky on XC7K325T using yosys+nextpnr-xilinx
 
+*NOTE*: This repository is now somewhat obsolete:
+
+Since the creation of the [toolchain installer](https://github.com/kintex-chatter/toolchain-installer), the
+`Makefile` used here will not work probably with the snap-packaged toolchain,
+because the `Makefile` here builds and installs its own toolchain instead in different directories.
+
+For examples of `Makefile`s using the packaged toolchain, see [demo-projects](https://github.com/kintex-chatter/demo-projects)
+
 ## Blinky on QMTech XC7K325T Core Board (xc7k325tffg676-1)
 ![qmtech_blinky](https://user-images.githubusercontent.com/89043237/152394699-52cf5a22-5fd6-45b6-b9a2-3d2ca89d1fd0.gif)
 - For guide to reproduce see list below
