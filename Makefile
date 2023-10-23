@@ -14,8 +14,10 @@ JOBS ?= 4
 
 # This workaround is only required for macOS, because Apple has explicitly disabled OpenMP support in their compilers.
 ifeq ($(shell uname -s),Darwin)
-NEXTPNR_BUILD_ENV = env CC=/usr/local/opt/llvm/bin/clang CXX=/usr/local/opt/llvm/bin/clang++ LDFLAGS="-L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib"
-NEXTPNR_CMAKE_FLAGS = -DBUILD_GUI=0
+HOME_BREW = $(shell brew --prefix llvm)
+NEXTPNR_BUILD_ENV = env CC=${HOME_BREW}/bin/clang CXX=${HOME_BREW}/bin/clang++ LDFLAGS="-L${HOME_BREW}/lib -Wl,-rpath,${HOME_BREW}/lib"
+NEXTPNR_CMAKE_FLAGS = -DBUILD_GUI=0 -DBUILD_PYTHON=0
+PRJXRAY_BUILD_ENV = env CXXFLAGS="-std=c++11"
 endif
 
 ifeq (${BOARD}, qmtech)
@@ -79,7 +81,7 @@ endif
 	if [ ! -e ${NEXTPNR_DIR}/prjxray-db ] ; then \
 		ln -s ${PWD}/nextpnr-xilinx/xilinx/external/prjxray-db ${NEXTPNR_DIR}/ ; \
 	fi
-	cmake -S prjxray -B prjxray/build -DCMAKE_INSTALL_PREFIX=${XRAY_DIR}
+	${PRJXRAY_BUILD_ENV} cmake -S prjxray -B prjxray/build ${PRJXRAY_CMAKE_FLAGS} -DCMAKE_INSTALL_PREFIX=${XRAY_DIR}
 	make -j${JOBS} -C prjxray/build
 	make -j${JOBS} -C prjxray/build install
 	make -j${JOBS} -C prjxray env
